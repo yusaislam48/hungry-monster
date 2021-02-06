@@ -1,0 +1,16 @@
+.mealDiv{
+    /* padding: 20px;
+    margin: 10px; */
+    /* border: 1px solid tomato; */
+    background-color: #F8F7F5;
+    width: 400px;
+    height: auto;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 15px;
+
+}
+.mealDiv img{
+    width: 200px;
+    border-radius: 10px;
+}
