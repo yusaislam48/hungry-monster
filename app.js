@@ -41,6 +41,10 @@ const displayMealDetails = mealId => {
     .then(res => res.json())
     .then(data => {
         console.log(data.meals[0]);
+        const mealsDetails = document.getElementById('mealsDetails');
+        mealsDetails.innerHTML = `
+            <img class="img-fluid m-5" style="width:200px;" src="${data.meals[0].strMealThumb}" alt="images">
+        `
     })
 }
 
