@@ -7,11 +7,13 @@ searchButton.addEventListener('click', function(){
 })
 
 const getMeal = inputMeal => {
-    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${inputMeal.value}`;
+    // const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${inputMeal.value}`;
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${inputMeal.value}`;
+
     fetch(url)
     .then(res => res.json())
     .then(data => {
-        // console.log(data);
+        // console.log(data.meals[0].idMeal);
         for (let i = 0; i < data.meals.length; i++) {
             const meals = data.meals[i];
             // console.log(meals.strMeal);
@@ -19,7 +21,7 @@ const getMeal = inputMeal => {
             const mealsListDiv = document.getElementById('mealsList');
 
             const meal = `
-            <div onClick = "displayMealDetails('${meals.strMeal}')">
+            <div onClick = "displayMealDetails('${meals.idMeal}')">
                 <img class="img-fluid" src="${meals.strMealThumb}" alt=""><br>
                 <h4 class='text-center'>${meals.strMeal}</h4>
             </div>
@@ -32,29 +34,13 @@ const getMeal = inputMeal => {
     })
 }
 
-const displayMealDetails = mealName => {
-    console.log(mealName);
+const displayMealDetails = mealId => {
+    // console.log(mealId);
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data.meals[0]);
+    })
 }
 
-// onClick="displayCountryDetails('${country.name}')"
-    // strMeal
-    // strMealThumb
-    // Mustard champ
-    // https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef
-    // https://www.themealdb.com/api/json/v1/1/search.php?s=Mustard_champ
-
-
-// Beef
-// app.js:7 Chicken
-// app.js:7 Dessert
-// app.js:7 Lamb
-// app.js:7 Miscellaneous
-// app.js:7 Pasta
-// app.js:7 Pork
-// app.js:7 Seafood
-// app.js:7 Side
-// app.js:7 Starter
-// app.js:7 Vegan
-// app.js:7 Vegetarian
-// app.js:7 Breakfast
-// app.js:7 Goat
