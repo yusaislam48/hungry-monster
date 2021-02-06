@@ -2,7 +2,7 @@ const inputMeal = document.getElementById('inputMeal');
 const searchButton = document.getElementById('searchButton');
 searchButton.addEventListener('click', function(){
     document.getElementById("mealsList").innerHTML = "";
-    console.log(inputMeal.value);
+    // console.log(inputMeal.value);
     getMeal(inputMeal);
 })
 
@@ -11,16 +11,18 @@ const getMeal = inputMeal => {
     fetch(url)
     .then(res => res.json())
     .then(data => {
-        console.log(data);
+        // console.log(data);
         for (let i = 0; i < data.meals.length; i++) {
             const meals = data.meals[i];
-            console.log(meals.strMeal);
-            console.log(meals.strMealThumb);
+            // console.log(meals.strMeal);
+            // console.log(meals.strMealThumb);
             const mealsListDiv = document.getElementById('mealsList');
 
             const meal = `
-                <div><img src="${meals.strMealThumb}" alt=""></div><br>
-                <div><h4 class='text-center'>${meals.strMeal}</h4></div>
+            <div onClick = "displayMealDetails('${meals.strMeal}')">
+                <img class="img-fluid" src="${meals.strMealThumb}" alt=""><br>
+                <h4 class='text-center'>${meals.strMeal}</h4>
+            </div>
             `
             const div = document.createElement('div'); //col-md-3
             div.className = 'col-md-3  mealDiv text-center';
@@ -30,6 +32,11 @@ const getMeal = inputMeal => {
     })
 }
 
+const displayMealDetails = mealName => {
+    console.log(mealName);
+}
+
+// onClick="displayCountryDetails('${country.name}')"
     // strMeal
     // strMealThumb
     // Mustard champ
