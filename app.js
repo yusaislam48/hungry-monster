@@ -2,6 +2,8 @@ const inputMeal = document.getElementById('inputMeal');
 const searchButton = document.getElementById('searchButton');
 searchButton.addEventListener('click', function(){
     document.getElementById("mealsList").innerHTML = "";
+    
+    document.getElementById('warningSec').style.display = 'none';
     // console.log(inputMeal.value);
     getMeal(inputMeal);
 })
@@ -32,10 +34,17 @@ const getMeal = inputMeal => {
             mealsListDiv.appendChild(div);
         }
     })
+    .catch(error => {
+        alert('Wrong Meal Name!')
+        document.getElementById('warningSec').style.display = 'block';
+        
+    })
 }
 
 const displayMealDetails = mealId => {
     // console.log(mealId);
+    
+    document.getElementById("mealsDetails").innerHTML = "";
     const ingradientsSec = document.getElementById('ingradientsSec');
     ingradientsSec.style.display = 'block';
     const mealSec = document.getElementById('mealSec');
@@ -47,7 +56,7 @@ const displayMealDetails = mealId => {
         console.log(data.meals[0]);
         const mealsDetails = document.getElementById('mealsDetails');
         mealsDetails.innerHTML = `
-            <button id="backBtn" type="button" class="btn btn-warning mb-1">back></button>
+            <button onClick = "backButton()" id="backBtn" type="button" class="btn btn-warning mb-1">back></button>
             <img class="img-fluid rounded mx-auto d-block" style="width:400px;" src="${data.meals[0].strMealThumb}" alt="images">
             <h2 class="fw-bold">${data.meals[0].strMeal}</h2>
             <h4>Ingredients</h4>
@@ -67,3 +76,10 @@ const displayMealDetails = mealId => {
     })
 }
 
+// const backBtn = document.getElementById('backBtn');
+const backButton = () => {
+    const ingradientsSec = document.getElementById('ingradientsSec');
+    ingradientsSec.style.display = 'none';
+    const mealSec = document.getElementById('mealSec');
+    mealSec.style.display = 'block';
+}
