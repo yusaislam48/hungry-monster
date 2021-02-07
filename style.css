@@ -14,3 +14,13 @@
     width: 200px;
     border-radius: 10px;
 }
+#ingradientsSec{
+    display: none;
+}
+#mealsDetails{
+    border-radius: 15px;
+    background-color: #F8F7F5;
+}
+#mealSec{
+    display: block;
+}

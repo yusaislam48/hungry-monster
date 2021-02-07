@@ -36,6 +36,10 @@ const getMeal = inputMeal => {
 
 const displayMealDetails = mealId => {
     // console.log(mealId);
+    const ingradientsSec = document.getElementById('ingradientsSec');
+    ingradientsSec.style.display = 'block';
+    const mealSec = document.getElementById('mealSec');
+    mealSec.style.display = 'none';
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
     fetch(url)
     .then(res => res.json())
@@ -43,7 +47,22 @@ const displayMealDetails = mealId => {
         console.log(data.meals[0]);
         const mealsDetails = document.getElementById('mealsDetails');
         mealsDetails.innerHTML = `
-            <img class="img-fluid m-5" style="width:200px;" src="${data.meals[0].strMealThumb}" alt="images">
+            <button id="backBtn" type="button" class="btn btn-warning mb-1">back></button>
+            <img class="img-fluid rounded mx-auto d-block" style="width:400px;" src="${data.meals[0].strMealThumb}" alt="images">
+            <h2 class="fw-bold">${data.meals[0].strMeal}</h2>
+            <h4>Ingredients</h4>
+            <ul>
+                <li>${data.meals[0].strIngredient1}</li>
+                <li>${data.meals[0].strIngredient2}</li>
+                <li>${data.meals[0].strIngredient3}</li>
+                <li>${data.meals[0].strIngredient4}</li>
+                <li>${data.meals[0].strIngredient5}</li>
+                <li>${data.meals[0].strIngredient6}</li>
+                <li>${data.meals[0].strIngredient7}</li>
+                <li>${data.meals[0].strIngredient8}</li>
+                <li>${data.meals[0].strIngredient9}</li>
+                <li>${data.meals[0].strIngredient10}</li>
+            </ul>   
         `
     })
 }
