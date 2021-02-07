@@ -9,8 +9,6 @@ searchButton.addEventListener('click', function () {
     getMeal(inputMeal);
 })
 
-
-
 // display all meal by search 
 const getMeal = async inputMeal => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${inputMeal.value}`;
