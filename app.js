@@ -18,7 +18,7 @@ const getMeal = async inputMeal => {
         displayMeals(data.meals);
     } catch (error) {
         document.getElementById('warningSec').innerHTML = `
-            <h1>Wrong Meal Name!</h1>
+            <h1><span style='font-size:100px;'>&#128557;<br></span>Wrong Meal Name!</h1>
         `;
         document.getElementById('warningSec').style.display = 'block';
     }    
@@ -51,7 +51,7 @@ const getMealDetails = async mealId => {
         displayMealDetails(data);
     } catch (error) {
         document.getElementById('warningSec').innerHTML = `
-            <h1>Please try again later!</h1>
+            <h1><span style='font-size:100px;'>&#128557;<br></span>Please try again later!</h1>
         `;
         document.getElementById('warningSec').style.display = 'block';
     }
