@@ -65,10 +65,10 @@ const displayMealDetails = data =>{
     // console.log(data.meals[0]);
     const mealsDetails = document.getElementById('mealsDetails');
     mealsDetails.innerHTML = `
-        <button onClick = "backButton()" id="backBtn" type="button" class="btn btn-warning mb-1">back></button>
+        <button onClick = "backButton()" id="backBtn" type="button" class="btn btn-warning mb-2">back></button>
         <img class="img-fluid rounded mx-auto d-block" style="width:400px;" src="${data.meals[0].strMealThumb}" alt="images">
-        <h2 class="fw-bold md-1">${data.meals[0].strMeal}</h2><br>
-        <h4>Ingredients</h4>
+        <h2 class="fw-bold md-1">${data.meals[0].strMeal}</h2>
+        <h4 class="md-4">Ingredients</h4>
         <ul>
             <li>${data.meals[0].strIngredient1}</li>
             <li>${data.meals[0].strIngredient2}</li>
@@ -77,9 +77,11 @@ const displayMealDetails = data =>{
             <li>${data.meals[0].strIngredient5}</li>
             <li>${data.meals[0].strIngredient6}</li>
             <li>${data.meals[0].strIngredient7}</li>
-            </ul>   
+        </ul>
+        <button onClick="youtubeBtn('${data.meals[0].strYoutube}')" type="button" class="btn btn-danger md-2">Youtube Tutorial Here!</button>
      `
 }
+
 
 // back button 
 const backButton = () => {
@@ -87,4 +89,10 @@ const backButton = () => {
     ingradientsSec.style.display = 'none';
     const mealSec = document.getElementById('mealSec');
     mealSec.style.display = 'block';
+}
+
+// youtubeButton
+const youtubeBtn = youtubeLink => {
+    // console.log(youtubeLink);
+    window.open(youtubeLink,'_blank');
 }
