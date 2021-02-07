@@ -12,29 +12,28 @@ const getMeal = inputMeal => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${inputMeal.value}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => {
-            for (let i = 0; i < data.meals.length; i++) {
-                const meals = data.meals[i];
-                const mealsListDiv = document.getElementById('mealsList');
-                const meal = `
-                    <div onClick = "displayMealDetails('${meals.idMeal}')">
-                        <img class="img-fluid" src="${meals.strMealThumb}" alt=""><br>
-                        <h4 class='text-center'>${meals.strMeal}</h4>
-                    </div>
-                `
-                const div = document.createElement('div');
-                div.className = 'col-md-3 mealDiv text-center';
-                div.innerHTML = meal;
-                mealsListDiv.appendChild(div);
-            }
-        })
+        .then(data => displayMeals(data.meals))
         .catch(error => {
             alert('Wrong Meal Name!')
             document.getElementById('warningSec').style.display = 'block';
 
         })
 }
-
+const displayMeals = meals =>{
+    meals.forEach(meals => {
+        const mealsListDiv = document.getElementById('mealsList');
+            const meal = `
+                <div onClick = "displayMealDetails('${meals.idMeal}')">
+                    <img class="img-fluid" src="${meals.strMealThumb}" alt=""><br>
+                    <h4 class='text-center'>${meals.strMeal}</h4>
+                </div>
+                `
+        const div = document.createElement('div');
+        div.className = 'col-md-3 mealDiv text-center';
+        div.innerHTML = meal;
+        mealsListDiv.appendChild(div);
+    });              
+}
 
 // display meal ingradients by click
 const displayMealDetails = mealId => {
