@@ -77,6 +77,9 @@ const displayMealDetails = data =>{
             <li>${data.meals[0].strIngredient5}</li>
             <li>${data.meals[0].strIngredient6}</li>
             <li>${data.meals[0].strIngredient7}</li>
+            <li>${data.meals[0].strIngredient8}</li>
+            <li>${data.meals[0].strIngredient9}</li>
+            <li>${data.meals[0].strIngredient10}</li>
         </ul>
         <button onClick="youtubeBtn('${data.meals[0].strYoutube}')" type="button" class="btn btn-danger md-2">Youtube Tutorial Here!</button>
      `
